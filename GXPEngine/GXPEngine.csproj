@@ -97,6 +97,8 @@
     <Compile Include="UI.cs" />
     <Compile Include="UIElements\Button.cs" />
     <Compile Include="UIElements\EnergyBar.cs" />
+    <Compile Include="UIElements\ExitButton.cs" />
+    <Compile Include="UIElements\PlayButton.cs" />
   </ItemGroup>
   <ItemGroup />
 </Project>

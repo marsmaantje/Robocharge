@@ -11,29 +11,32 @@ namespace UIElements
     class Button : CustomObject
     {
         AnimationSprite highlight;
-        public Button(string filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows)
-        {
+        int releasedFrame;
+        int pressedFrame;
 
-        }
+        public Button(string filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows) { }
 
         public override void initialize(Scene parentScene)
         {
             base.initialize(parentScene);
-
-            //add the highlighted visual
-            highlight = new AnimationSprite("Highlight-" + this.texture.filename, this._cols, this._rows, addCollider: false);
-            this.AddChild(highlight);
-            highlight.currentFrame = this.currentFrame;
-            highlight.SetScaleXY(1, 1); //ensure transform is the same
-            highlight.SetXY(0, 0);
-            highlight.visible = false;
+            releasedFrame = currentFrame;
+            pressedFrame = releasedFrame + 1;
         }
 
         public void Update()
         {
-            if(HitTestPoint(Input.mouseX, Input.mouseY))
-                if(Input.GetMouseButtonDown(0))
-                    Console.WriteLine("click");
+            currentFrame = releasedFrame;
+            if (HitTestPoint(Input.mouseX, Input.mouseY))
+            {
+                currentFrame = pressedFrame;
+                if (Input.GetMouseButtonDown(0))
+                    OnClicked();
+            }
         }
+
+        /// <summary>
+        /// Should be overridden by objects inheritting this one, gets called when the object gets clicked
+        /// </summary>
+        protected virtual void OnClicked() { }
     }
 }
