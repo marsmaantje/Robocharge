@@ -14,7 +14,7 @@ namespace Objects
         private int endFrame;
         private List<Button> referenceButtons;
 
-        public Door(String fileName, int cols, int rows, TiledObject obj) : base(obj, fileName, cols, rows, -1, true, true)
+        public Door(String filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows, -1, true, true)
         {
             referenceButtons = new List<Button>();
         }

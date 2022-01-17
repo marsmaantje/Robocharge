@@ -10,7 +10,7 @@ namespace Objects
     class DeathTrigger : CustomObject
     {
 
-        public DeathTrigger(string fileName, int cols, int rows, TiledObject obj) : base(obj, fileName, cols, rows)
+        public DeathTrigger(string filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows)
         {
             collider.isTrigger = true;
             this.visible = obj.GetBoolProperty("isVisible", true);

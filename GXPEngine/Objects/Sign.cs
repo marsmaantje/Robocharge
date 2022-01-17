@@ -11,7 +11,7 @@ namespace Objects
     {
         string text;
 
-        public Sign(String fileName, int cols, int rows, TiledObject obj) : base(obj, fileName, cols, rows, -1, true, true)
+        public Sign(String filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows, -1, true, true)
         {
             this.collider.isTrigger = true;
         }

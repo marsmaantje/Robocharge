@@ -13,7 +13,7 @@ namespace Objects
         int pressedFrame;
         public bool isPressed;
 
-        public Button(String fileName, int cols, int rows, TiledObject obj) : base(obj, fileName, cols, rows, -1, true, true)
+        public Button(String filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows, -1, true, true)
         {
             this.collider.isTrigger = true;
             this.obj = obj;

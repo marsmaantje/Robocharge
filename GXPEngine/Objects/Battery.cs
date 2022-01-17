@@ -11,7 +11,7 @@ namespace Objects
     {
         float energy = 0;
 
-        public Battery(string fileName, int cols, int rows, TiledObject obj) : base(obj, fileName, cols, rows)
+        public Battery(string filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows)
         {
             this.collider.isTrigger = true;
             energy = obj.GetFloatProperty("energy", energy);

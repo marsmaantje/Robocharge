@@ -9,7 +9,7 @@ namespace Objects
 {
     class Checkpoint : CustomObject
     {
-        public Checkpoint(string fileName, int cols, int rows, TiledObject obj) : base(obj, fileName, cols, rows) { this.collider.isTrigger = true; }
+        public Checkpoint(string filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows) { this.collider.isTrigger = true; }
 
         public void OnCollision(GameObject other)
         {
