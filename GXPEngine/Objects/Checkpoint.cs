@@ -11,11 +11,15 @@ namespace Objects
     {
         public Checkpoint(string filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows) { this.collider.isTrigger = true; }
 
-        public void OnCollision(GameObject other)
+        /// <summary>
+        /// check collision with ONLY the player
+        /// </summary>
+        public void Update()
         {
-            if (other is Player)
+            if(HitTest(parentScene.player))
             {
                 parentScene.setCheckpoint(this);
+                parentScene.player.addEnergy(1);
             }
         }
     }

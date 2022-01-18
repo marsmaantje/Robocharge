@@ -111,8 +111,6 @@ class Player : EasyDraw
         energyBar = new EnergyBar(energy, maxEnergy);
         energyBar.SetOrigin(energyBar.width / 2, 0);
         parentScene.ui.addElement(energyBar, "energyBar", game.width / 2, 0);
-        energyBar.maxEnergy = maxEnergy;
-        energyBar.energy = energy;
     }
 
     /// <summary>
