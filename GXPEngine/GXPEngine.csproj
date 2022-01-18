@@ -87,6 +87,7 @@
     <Compile Include="Objects\CustomObject.cs" />
     <Compile Include="Objects\DeathTrigger.cs" />
     <Compile Include="Objects\Platform.cs" />
+    <Compile Include="Objects\LevelDoor.cs" />
     <Compile Include="Objects\Sign.cs" />
     <Compile Include="Objects\Door.cs" />
     <Compile Include="Objects\Button.cs" />

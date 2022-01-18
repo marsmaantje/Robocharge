@@ -32,13 +32,13 @@ namespace GXPEngine
 			name = width + "x" + height;
 		}
 
-		public Canvas (System.Drawing.Bitmap bitmap, bool addCollider=true) : base (bitmap,addCollider)
+		public Canvas (System.Drawing.Bitmap bitmap, bool addCollider=true) : base (bitmap, addCollider)
 		{
 			_graphics = Graphics.FromImage(bitmap);
 			_invalidate = true;
 		}
 
-		public Canvas(string filename, bool addCollider=true):base(filename,addCollider)
+		public Canvas(string filename, bool addCollider=true):base(filename, false, addCollider)
 		{
 			_graphics = Graphics.FromImage(texture.bitmap);
 			_invalidate = true;
