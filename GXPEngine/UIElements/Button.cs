@@ -10,7 +10,6 @@ namespace UIElements
 {
     class Button : CustomObject
     {
-        AnimationSprite highlight;
         int releasedFrame;
         int pressedFrame;
 

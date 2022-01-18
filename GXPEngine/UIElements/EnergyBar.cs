@@ -17,7 +17,7 @@ namespace UIElements
         /// </summary>
         /// <param name="currentEnergy">Amount of energy you want to start with</param>
         /// <param name="maxEnergy">Maximum energy the bar will display</param>
-        public EnergyBar(float currentEnergy, float maxEnergy) : base("sprites/energyBar.png", 1, 3)
+        public EnergyBar(float currentEnergy, float maxEnergy) : base("sprites/energyBar.png", 1, 3, addCollider: false)
         {
             this.energy = currentEnergy;
             this.maxEnergy = maxEnergy;

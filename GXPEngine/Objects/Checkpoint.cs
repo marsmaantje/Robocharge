@@ -16,6 +16,7 @@ namespace Objects
         /// </summary>
         public void Update()
         {
+            currentFrame = parentScene.currentCheckpoint == this ? 1 : 0;
             if(HitTest(parentScene.player))
             {
                 parentScene.setCheckpoint(this);
