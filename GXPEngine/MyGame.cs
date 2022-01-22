@@ -6,7 +6,8 @@ public class MyGame : Game
 {
 	Scene currentScene;
 	UI ui;
-	public string currentMapName = "Main Menu.tmx";
+	//public string currentMapName = "maps/Main Menu.tmx";
+	public string currentMapName = "maps/Factory.tmx";
 	bool levelLoad = false;
 
 	public MyGame() : base(200, 150, false, false, 800, 600, true)		// Create a window that's 800x600 and NOT fullscreen

@@ -104,10 +104,10 @@ class Scene : Pivot
             {
                 float parallaxX = parser.map.ImageLayers[i].parallaxx;
                 float parallaxY = parser.map.ImageLayers[i].parallaxy;
-                Layers.ImageLayer imageLayer = new Layers.ImageLayer(this, parallaxX, parallaxY);
+                Layers.ImageLayer imageLayer = new Layers.ImageLayer(parser, parser.map.ImageLayers[i], this, parallaxX, parallaxY);
                 AddChild(imageLayer);
-                parser.rootObject = imageLayer;
-                parser.LoadImageLayers(new int[] { i });
+                //parser.rootObject = imageLayer;
+                //parser.LoadImageLayers(new int[] { i });
             }
         }
 

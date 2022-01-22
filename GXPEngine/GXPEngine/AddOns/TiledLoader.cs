@@ -99,7 +99,7 @@ namespace TiledMapParser {
 		}
 
 
-		string _foldername;
+		public string _foldername;
 		List<string> _manualObjects;
 		Assembly _callingAssembly;
 

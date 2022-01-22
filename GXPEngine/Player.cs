@@ -69,7 +69,7 @@ class Player : EasyDraw
     /// </summary>
     private void createAnimation()
     {
-        animation = new AnimationSprite("OrangeRobot_SpriteSheet.png", 8, 5, -1, true, false);
+        animation = new AnimationSprite("sprites/OrangeRobot_SpriteSheet.png", 8, 5, -1, true, false);
         AddChild(animation);
         animation.SetOrigin(animation.width / 2, animation.height);
         animation.SetXY(0, 0);
