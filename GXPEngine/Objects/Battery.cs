@@ -10,6 +10,7 @@ namespace Objects
     class Battery : CustomObject
     {
         float energy = 0;
+        bool pickedUp = false;
 
         public Battery(string filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows)
         {
@@ -29,12 +30,22 @@ namespace Objects
         /// </summary>
         public void Update()
         {
-            if(HitTest(parentScene.player))
+            if(HitTest(parentScene.player) && !pickedUp)
             {
                 //add energy to the player
                 parentScene.player.addEnergy(energy);
-                this.LateDestroy();
+                pickedUp = true;
+                visible = false;
             }
+        }
+
+        /// <summary>
+        /// Will spawn the battery back in, used when respawning the player
+        /// </summary>
+        public void respawn()
+        {
+            pickedUp = false;
+            visible = true;
         }
     }
 }

@@ -196,6 +196,12 @@ class Scene : Pivot
             player.SetXY(currentCheckpoint.x, currentCheckpoint.y);
             player.initialize(this);
             player.Move(-currentCheckpoint.width, 0);
+
+            Battery[] batteries = FindObjectsOfType<Battery>();
+            foreach (Battery battery in batteries)
+            {
+                battery.respawn();
+            }
         }
     }
 }
