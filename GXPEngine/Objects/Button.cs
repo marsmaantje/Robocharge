@@ -13,6 +13,9 @@ namespace Objects
         int pressedFrame;
         public bool isPressed;
 
+        bool toggle = false;
+        bool wasOver = false;
+
         public Button(String filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows, -1, true, true)
         {
             this.collider.isTrigger = true;
@@ -23,14 +26,23 @@ namespace Objects
         public override void initialize(Scene parentScene)
         {
             base.initialize(parentScene);
-            Console.WriteLine(currentFrame);
+            toggle = obj.GetBoolProperty("Toggle", toggle);
             releasedFrame = currentFrame;
             pressedFrame = releasedFrame + 1;
         }
 
         void Update()
         {
-            isPressed = HitTest(parentScene.player);
+            if (toggle)
+            {
+                bool colliding = HitTest(parentScene.player);
+                if (colliding & !wasOver)
+                    isPressed = !isPressed;
+                wasOver = colliding;
+            }
+            else
+                isPressed = HitTest(parentScene.player);
+
             currentFrame = isPressed ? pressedFrame : releasedFrame;
             
         }
