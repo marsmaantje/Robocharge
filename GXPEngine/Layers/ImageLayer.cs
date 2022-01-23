@@ -9,11 +9,9 @@ namespace Layers
 {
     class ImageLayer : Layer
     {
-        TiledMapParser.ImageLayer obj;
 
         public ImageLayer(TiledMapParser.TiledLoader loader, TiledMapParser.ImageLayer obj, Scene parentScene, float paralaxX = 1, float paralaxY = 1) : base(parentScene, paralaxX, paralaxY)
         {
-            this.obj = obj;
             bool repeating = obj.GetBoolProperty("Repeating", false);
 
             for (int i = 0; i < (repeating ? 10 : 1); i++)
@@ -24,7 +22,7 @@ namespace Layers
                 image.alpha = obj.Opacity;
 
                 AddChild(image);
-            }
+            }   
 
         }
     }
