@@ -169,7 +169,11 @@ class Player : EasyDraw
         int prevFrame = animation.currentFrame;
         //animate the character at x fps
         if (energy > 0)
+        {
             animation.Animate(8f * Time.deltaTime / 1000f);
+            if (!isDying)
+                isDead = false;
+        }
         else
             isDead = true; //if I am out of energy, I am dead
 
