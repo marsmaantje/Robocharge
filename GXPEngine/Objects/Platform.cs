@@ -108,10 +108,11 @@ namespace Objects
             reverseDirectionVector.x = -startDirectionVector.x;
             reverseDirectionVector.y = -startDirectionVector.y;
 
+            startPosition = new Vector2(this.x, this.y);
+
             //initialize the start and endPoints if not bound by collision
             if (!boundByCollision)
             {
-                startPosition = new Vector2(this.x, this.y);
                 endPosition = new Vector2(this.x + (startDirectionVector.x * travelDistance * 16), this.y + (startDirectionVector.y * travelDistance * 16)); // * 16 because one tile is 16 pixels
             }
 
@@ -196,6 +197,13 @@ namespace Objects
             }
 
             return (collision == null || collision.other is Player);
+        }
+
+        public override void respawn()
+        {
+            this.x = startPosition.x;
+            this.y = startPosition.y;
+            this.isReversed = false;
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Objects
         /// <summary>
         /// Will spawn the battery back in, used when respawning the player
         /// </summary>
-        public void respawn()
+        public override void respawn()
         {
             pickedUp = false;
             visible = true;

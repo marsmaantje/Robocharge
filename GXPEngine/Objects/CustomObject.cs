@@ -21,5 +21,7 @@ namespace Objects
         {
             this.parentScene = parentScene;
         }
+
+        public virtual void respawn() {}
     }
 }

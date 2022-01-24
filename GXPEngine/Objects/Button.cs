@@ -46,5 +46,10 @@ namespace Objects
             currentFrame = isPressed ? pressedFrame : releasedFrame;
             
         }
+
+        public override void respawn()
+        {
+            this.toggle = false;
+        }
     }
 }
