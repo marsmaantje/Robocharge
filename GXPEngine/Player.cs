@@ -36,6 +36,7 @@ class Player : EasyDraw
     //sounds
     Sound jumpSound = new Sound("sounds/jump.wav");
     Sound stepSound = new Sound("sounds/step.wav");
+    Sound deathSound = new Sound("sounds/explosion.wav");
     List<int> stepFrames = new List<int>() { 6, 9 };
 
     private float maxEnergy = 100; // maximum energy you can have
@@ -307,6 +308,8 @@ class Player : EasyDraw
 
     public void die()
     {
+        if(!isDying) //ensure the sound only plays once
+            deathSound.Play().Frequency = (Mathf.Sin(this.x + Time.now / 100f) * 10000 + 44100);
         isDying = true;
     }
 }
