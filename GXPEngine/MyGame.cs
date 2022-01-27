@@ -6,8 +6,9 @@ public class MyGame : Game
 {
 	Scene currentScene;
 	UI ui;
-	//public string currentMapName = "maps/Main Menu.tmx";
-	public string currentMapName = "maps/Factory.tmx";
+	public string currentMapName = "maps/Main Menu.tmx";
+	//public string currentMapName = "maps/Factory.tmx";
+	//public string currentMapName = "maps/Nature.tmx";
 	bool levelLoad = false;
 
 	public MyGame() : base(200, 150, false, false, 800, 600, true)		// Create a window that's 800x600 and NOT fullscreen
@@ -32,6 +33,7 @@ public class MyGame : Game
 			createLevel(currentMapName);
         }
 
+		//if we are currently loading a new level, actually do it
 		if(levelLoad)
         {
 			createLevel(currentMapName);
@@ -40,6 +42,10 @@ public class MyGame : Game
         }
 	}
 
+	/// <summary>
+	/// Will create a new level and UI based on the name given
+	/// </summary>
+	/// <param name="mapName">fileName of the new level</param>
 	void createLevel(String mapName)
     {
 		createUI();
@@ -52,12 +58,19 @@ public class MyGame : Game
 		this.SetChildIndex(ui, 1);
 	}
 
+	/// <summary>
+	/// Will create a new UI
+	/// </summary>
 	void createUI()
     {
 		ui = new UI(width, height);
 		AddChild(ui);
     }
 
+	/// <summary>
+	/// Will initialize the loading of a new level, actual level will be created next frame
+	/// </summary>
+	/// <param name="newMapName"></param>
 	public void loadNewLevel(string newMapName)
     {
 		currentScene.LateDestroy();

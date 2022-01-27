@@ -33,6 +33,9 @@ namespace Layers
             this.index = index;
         }
 
+        /// <summary>
+        /// Calculate the paralax offset every frame
+        /// </summary>
         public void Update()
         {
             this.x = parentScene.x * (paralaxX - 1);

@@ -25,6 +25,9 @@ namespace Objects
             mapName = obj.GetStringProperty("MapName", ((MyGame)game).currentMapName);
         }
 
+        /// <summary>
+        /// If the player is colliding, allow for level switch
+        /// </summary>
         void Update()
         {
             if (HitTest(parentScene.player))

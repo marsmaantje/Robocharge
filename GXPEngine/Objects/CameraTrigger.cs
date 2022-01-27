@@ -8,7 +8,6 @@ using TiledMapParser;
 
 namespace Objects
 {
-
     class CameraTrigger : CustomObject
     {
         public Pivot target;

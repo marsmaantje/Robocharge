@@ -205,6 +205,7 @@ class Player : EasyDraw
         }
         else
         {
+            //if the player is dying, check whether the animation is finished and stay on the last frame if so
             if(animation.currentFrame != 33)
             {
                 animation.SetCycle(29, 5);
@@ -300,12 +301,19 @@ class Player : EasyDraw
         return false;
     }
 
+    /// <summary>
+    /// Adds the specified amount of energy to the player and clamps it to the max energy
+    /// </summary>
+    /// <param name="amount">amount of energy to add</param>
     public void addEnergy(float amount)
     {
         energy += amount;
         energy = Mathf.Min(energy, maxEnergy);
     }
 
+    /// <summary>
+    /// initiates the explosion of the player death
+    /// </summary>
     public void die()
     {
         if(!isDying) //ensure the sound only plays once

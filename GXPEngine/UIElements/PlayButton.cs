@@ -9,6 +9,9 @@ namespace UIElements
 {
     class PlayButton : Button
     {
+        /// <summary>
+        /// fileNmae of the map this button should load when pressed
+        /// </summary>
         string mapName;
 
         public PlayButton(string filename, int cols, int rows, TiledObject obj) : base(filename, cols, rows, obj) { }

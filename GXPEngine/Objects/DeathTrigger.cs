@@ -21,6 +21,10 @@ namespace Objects
             base.initialize(parentScene);
         }
 
+        /// <summary>
+        /// Kill the player if he is colliding
+        /// </summary>
+        /// <param name="other">other object it collided with</param>
         public void OnCollision(GameObject other)
         {
             if(other is Player)

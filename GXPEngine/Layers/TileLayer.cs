@@ -6,6 +6,9 @@ using GXPEngine;
 
 namespace Layers
 {
+    /// <summary>
+    /// Layer for Tiles, special functionality can be added if needed
+    /// </summary>
     class TileLayer : Layer
     {
 

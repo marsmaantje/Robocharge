@@ -7,6 +7,10 @@ using TiledMapParser;
 
 namespace Objects
 {
+    /// <summary>
+    /// Base class for custom objects, allows for respawning,
+    /// initializing and stores a reference to the current Scene and tiled object
+    /// </summary>
     class CustomObject : AnimationSprite
     {
         public TiledObject obj;

@@ -12,7 +12,7 @@ namespace Objects
         private const int animationFrames = 7;
         private int startFrame;
         private int endFrame;
-        private List<Button> referenceButtons;
+        private List<Button> referenceButtons; //all buttons the door should listen to for events
 
         public Door(String filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows, -1, true, true)
         {
@@ -25,6 +25,7 @@ namespace Objects
             startFrame = currentFrame;
             endFrame = startFrame + animationFrames - 1;
 
+            //find all buttons with the same name as the door and add them to the list
             GameObject[] buttons = parentScene.FindObjectsOfType<Button>();
             foreach (Button button in buttons)
             {
@@ -48,6 +49,7 @@ namespace Objects
                 }
             }
 
+            //do the animation depending on the state
             if (shouldOpen)
             {
                 if (currentFrame != endFrame)

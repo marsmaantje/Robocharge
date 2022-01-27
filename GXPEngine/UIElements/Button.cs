@@ -8,6 +8,9 @@ using Objects;
 
 namespace UIElements
 {
+    /// <summary>
+    /// Basic button class
+    /// </summary>
     class Button : CustomObject
     {
         int releasedFrame;
@@ -19,7 +22,7 @@ namespace UIElements
         {
             base.initialize(parentScene);
             releasedFrame = currentFrame;
-            pressedFrame = releasedFrame + 1;
+            pressedFrame = releasedFrame + 1; //calculate pressed frame
         }
 
         public void Update()
@@ -29,7 +32,7 @@ namespace UIElements
             {
                 currentFrame = pressedFrame;
                 if (Input.GetMouseButtonDown(0))
-                    OnClicked();
+                    OnClicked(); //call the clicked method if the mouse is over and just pressed down
             }
         }
 

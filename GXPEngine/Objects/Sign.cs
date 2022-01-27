@@ -20,9 +20,12 @@ namespace Objects
         public override void initialize(Scene parentScene)
         {
             base.initialize(parentScene);
-            text = obj.GetStringProperty("SignText");
+            text = obj.GetStringProperty("SignText"); //read the text from the tiledObject
         }
 
+        /// <summary>
+        /// Show the text if the player is over the sign
+        /// </summary>
         void Update()
         {
             if (HitTest(parentScene.player))

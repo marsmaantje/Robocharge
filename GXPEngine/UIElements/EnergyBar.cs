@@ -31,6 +31,9 @@ namespace UIElements
             healthMeter.color = 0x00ff00;
         }
 
+        /// <summary>
+        /// get or set the energy, will automatically update the visual if changed
+        /// </summary>
         public float energy
         {
             get
@@ -45,6 +48,9 @@ namespace UIElements
             }
         }
 
+        /// <summary>
+        /// get or set the maximum energy, will automatically update the visual if changed
+        /// </summary>
         public float maxEnergy
         { 
             get
@@ -58,6 +64,9 @@ namespace UIElements
             }
         }
 
+        /// <summary>
+        /// Update the visual of the energy to represent its change
+        /// </summary>
         private void updateVisuals()
         {
             byte R = (byte)(255 - (Mathf.Pow(energy / maxEnergy, 4f) * 255));

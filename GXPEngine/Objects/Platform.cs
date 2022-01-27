@@ -12,6 +12,7 @@ namespace Objects
     {
         /// <summary>
         /// Boolean whether the platform stops its movement after it hits something (excluding the player) or after a certain distance
+        /// Not currently used, the platform is always bound by collision
         /// </summary>
         private bool boundByCollision = true;
 
@@ -142,7 +143,6 @@ namespace Objects
                     }
                 }
 
-                //TODO: implement button pressing
                 MovePlatform(buttonPressed ? reverseDirectionVector : startDirectionVector, speed);
             }
             else
@@ -188,7 +188,7 @@ namespace Objects
                 //only move the player if the platform did not collide with anything,
                 //otherwise the player continues moving even though the platform has stopped
                 if(collision == null)
-                    parentScene.player.Move(vx, vy);
+                    parentScene.player.MoveUntilCollision(vx, vy);
 
             }
             else
@@ -199,6 +199,9 @@ namespace Objects
             return (collision == null || collision.other is Player);
         }
 
+        /// <summary>
+        /// Reset the platform position and rotation
+        /// </summary>
         public override void respawn()
         {
             this.x = startPosition.x;

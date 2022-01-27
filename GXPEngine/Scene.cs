@@ -20,7 +20,7 @@ class Scene : Pivot
     //camera movement
     float smoothSpeed = 4f;
     GameObject currentLookTarget;
-    
+
     public Scene(UI ui)
     {
         this.ui = ui;
@@ -112,7 +112,7 @@ class Scene : Pivot
         }
 
         //instead of loading all tile layers, load each seperately because we dont want collision everywhere
-        
+
         addTileLayer(0, 1 + layerCount, false);
         addTileLayer(1, 2 + layerCount, true);
         addTileLayer(2, 3 + layerCount, false);
@@ -123,9 +123,9 @@ class Scene : Pivot
         parser.addColliders = true;
         parser.LoadObjectGroups();
 
-        foreach (GameObject child in  this.GetChildren())
+        foreach (GameObject child in this.GetChildren())
         {
-            if(child is CustomObject)
+            if (child is CustomObject)
             {
                 ((CustomObject)child).initialize(this);
             }
@@ -145,6 +145,7 @@ class Scene : Pivot
     /// <param name="generateColliders"> Whether to generate colliders so the player can collide with the tiles</param>
     public void addTileLayer(int index, int offset, bool generateColliders)
     {
+        if (index >= parser.NumTileLayers) return; //stop the code if the tile layer does not exist
         TileLayer newLayer = new TileLayer(this);
         parser.addColliders = generateColliders;
         parser.rootObject = newLayer;
@@ -153,15 +154,24 @@ class Scene : Pivot
         this.SetChildIndex(newLayer, offset);
     }
 
+    /// <summary>
+    /// Sets the object the camera should look at
+    /// </summary>
+    /// <param name="target">the object to focus</param>
     public void setLookTarget(GameObject target)
     {
-        if(target != null)
+        if (target != null)
             currentLookTarget = target;
     }
 
+    /// <summary>
+    /// Method used to instantiate custom objects we dont want the tiledLoader to create
+    /// </summary>
+    /// <param name="sprite">Sprite of the object tiled created</param>
+    /// <param name="obj">tiledObject of the object tiled created</param>
     public void objectCreateCallback(Sprite sprite, TiledObject obj)
     {
-        if(obj.Type == "Player")
+        if (obj.Type == "Player" && player == null) //instantiate player if there is none thus far
         {
             playerObj = obj;
             player = new Player(obj);
@@ -171,9 +181,13 @@ class Scene : Pivot
         }
     }
 
+    /// <summary>
+    /// Set the checkpoint of the player to the given checkpoint
+    /// </summary>
+    /// <param name="point">Checkpoint to set</param>
     public void setCheckpoint(Checkpoint point)
     {
-        if(currentCheckpoint != point)
+        if (currentCheckpoint != point)
         {
             currentCheckpoint = point;
         }
@@ -184,12 +198,13 @@ class Scene : Pivot
     /// </summary>
     public void respawn()
     {
-        if(currentCheckpoint == null)
+        if (currentCheckpoint == null)
         {
             ((MyGame)game).loadNewLevel(((MyGame)game).currentMapName); //reload the level from the game
         }
         else
         {
+            //create a new player at the current checkpoint, and call respawn on all CustomObjects
             player.Destroy();
             player = new Player(playerObj);
             AddChild(player);
