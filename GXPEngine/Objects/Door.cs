@@ -13,6 +13,8 @@ namespace Objects
         private int startFrame;
         private int endFrame;
         private List<Button> referenceButtons; //all buttons the door should listen to for events
+        private bool XOR = false; //whether all the button states should be XOR'ed
+        private bool inversed = false;//whether the door state is reversed (press button to close)
 
         public Door(String filename, int cols, int rows, TiledObject obj) : base(obj, filename, cols, rows, -1, true, true)
         {
@@ -22,6 +24,7 @@ namespace Objects
         public override void initialize(Scene parentScene)
         {
             base.initialize(parentScene);
+            readVariables();
             startFrame = currentFrame;
             endFrame = startFrame + animationFrames - 1;
 
@@ -36,6 +39,13 @@ namespace Objects
             }
         }
 
+        void readVariables()
+        {
+            XOR = obj.GetBoolProperty("XOR", XOR);
+            Console.WriteLine(XOR);
+            inversed = obj.GetBoolProperty("Inversed", inversed);
+        }
+
         void Update()
         {
             //check whether any button is pressed
@@ -44,10 +54,18 @@ namespace Objects
             {
                 if (targetButton.isPressed)
                 {
-                    shouldOpen = true;
-                    break;
+                    if (XOR)
+                    {
+                        shouldOpen = !shouldOpen;
+                    }
+                    else
+                    {
+                        shouldOpen = true;
+                        break;
+                    }
                 }
             }
+            shouldOpen = shouldOpen ^ inversed;
 
             //do the animation depending on the state
             if (shouldOpen)

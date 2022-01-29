@@ -49,6 +49,7 @@ namespace Objects
         /// List of buttons that will trigger the platform
         /// </summary>
         private List<Button> referenceButtons;
+        private bool XOR = false; //whether all the button states should be XOR'ed
 
         /// <summary>
         /// Indicator whether the platform is going in the startDirection or the reverse
@@ -138,8 +139,15 @@ namespace Objects
                 {
                     if (button.isPressed)
                     {
-                        buttonPressed = true;
-                        break;
+                        if (XOR)
+                        {
+                            buttonPressed = !buttonPressed;
+                        }
+                        else
+                        {
+                            buttonPressed = true;
+                            break;
+                        }
                     }
                 }
 

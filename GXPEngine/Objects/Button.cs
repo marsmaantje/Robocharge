@@ -54,7 +54,7 @@ namespace Objects
         /// </summary>
         public override void respawn()
         {
-            this.toggle = false;
+            this.isPressed = false;
         }
     }
 }
